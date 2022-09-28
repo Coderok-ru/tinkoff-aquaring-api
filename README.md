@@ -137,12 +137,14 @@ $params = [
 
 ### 3. Получить статус платежа
 
-    $params = [
-         'PaymentId' => '1816627256',
-    ];
     
-    $api->getState($params);
                 
-
+```php
+$params = [
+    'PaymentId' => '1816627256',
+ ];
+    
+$api->getState($params);
+```
 ---
 
