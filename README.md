@@ -1,5 +1,5 @@
-# Simple Tinkoff bank acquiring library.
-Простая библиотека для приема платежей через интернет для Тинькофф банк.
+# Tinkoff bank acquiring library.
+Библиотека для приема платежей через интернет для Тинькофф банк.
 
 ### Возможности
 
@@ -119,26 +119,7 @@ $api = new TinkoffAquaring(
     ];
 
 //Получение url для оплаты
-$paymentURL = $tinkoff->paymentURL($payment, $items);
-
-//Контроль ошибок
-if(!$paymentURL){
-  echo($tinkoff->error);
-} else {
-  $payment_id = $tinkoff->payment_id;
-  return redirect($result['payment_url']);
-}
-```
-
-### 3. Получить статус платежа
-<div class="card">
-            <h2>Метод Init:</h2>
-
-            <div class="article">
-                <?php
-                $enabledTaxation = true;
-
-                $params = [
+$params = [
                     'OrderId' => 200001,
                     'Amount'  => $amount,
                     'DATA'    => [
@@ -152,51 +133,16 @@ if(!$paymentURL){
                 }
 
                 $api->init($params);
-                echo $params;
-                ?>
-
-                <p><span class="highlight">Response</span>: <?= $api->response ?></p>
-
-                <?php if ($api->error) : ?>
-                    <span class="error"><?= $api->error ?></span>
-                <?php else : ?>
-                    <p><span class="highlight">Status</span>: <?= $api->status ?></p>
-                    <p>
-                        <span class="highlight">PaymentUrl</span>:
-                        <a href="<?= $api->paymentUrl ?>" target="_blank"><?= $api->paymentUrl ?></a>
-                    </p>
-                    <p><span class="highlight">PaymentId</span>: <?= $api->paymentId ?></p>
-                <?php endif; ?>
-            </div>
-        </div>
 ```
 
-### 4. Отмена платежа
-```php
-$status = $tinkoff->cencelPayment($payment_id)
+### 3. Получить статус платежа
 
-//Контроль ошибок
-if(!$status){
-  echo($tinkoff->error);
-} else {
-  echo($status);
-}
-```
-
-### 5. Подтверждение платежа
-```php
-$status = $tinkoff->confirmPayment($payment_id)
-
-//Контроль ошибок
-if(!$status){
-  echo($tinkoff->error);
-} else {
-  echo($status);
-}
-```
+    $params = [
+         'PaymentId' => '1816627256',
+    ];
+    
+    $api->getState($params);
+                
 
 ---
 
-[![Donate button](https://www.paypal.com/en_US/i/btn/btn_donate_SM.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=FGCHZNKKVG622&source=url)
-
-*Если вы нашли этот проект полезным, пожалуйста сделайте небольшой донат - это поможет мне улучшить код*
