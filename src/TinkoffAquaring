@@ -224,7 +224,7 @@ class TinkoffAquaring
 
             return $out;
         } else {
-            throw new HttpException('Can not create connection to ' . $api_url . ' with args ' . $args, 404);
+            throw 'Can not create connection to ' . $api_url . ' with args ' . $args;
         }
     }
 }
