@@ -1,0 +1,19 @@
+{
+    "name": "coderok/tinkoff-aquaring",
+    "description": "tinkoff aquaring api",
+    "type": "library",
+    "license": "MIT",
+    "minimum-stability": "stable",
+    "autoload": {
+        "psr-4": {
+            "Coderok\\TinkoffAquaring\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Coderok",
+            "email": "info@coderok.ru"
+        }
+    ],
+    "require": {}
+}
